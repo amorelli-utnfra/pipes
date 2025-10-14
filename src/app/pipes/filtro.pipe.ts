@@ -8,7 +8,11 @@ import { Usuario } from '../modelos/usuario';
 export class FiltroPipe implements PipeTransform {
 
   transform(usuarios: Usuario[], busqueda: string): Usuario[] {
-    return usuarios.filter(usuario => usuario.name.first.toLowerCase().includes(busqueda.toLowerCase()));
+    return usuarios.filter(usuario => {
+      const { title, first, last } = usuario.name;
+      const completeName = `${title} ${first} ${last}`.toLowerCase();
+      return completeName.includes(busqueda.toLowerCase());
+    });
   }
 
 }
