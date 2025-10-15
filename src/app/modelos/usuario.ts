@@ -1,4 +1,5 @@
 export interface Usuario {
+  [x: string]: any;
     gender: string;
     name: {
       title: string;

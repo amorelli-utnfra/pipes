@@ -7,11 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { NombrePipe } from './pipes/nombre.pipe';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { GeneroPipe } from './pipes/genero.pipe';
+import { EdadPipe } from './pipe/edad.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, FormsModule, DatePipe, CurrencyPipe, LowerCasePipe, NombrePipe, FiltroPipe, GeneroPipe],
+  imports: [RouterOutlet, NgFor, SortPipe, EdadPipe, FormsModule, DatePipe, CurrencyPipe, LowerCasePipe, NombrePipe, FiltroPipe, GeneroPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -11,12 +11,12 @@
     <th>Nacimiento</th>
     <th>Ingresos</th>
   </tr>
-  <tr *ngFor="let usuario of usuarios | filtro: busqueda">
+  <tr *ngFor="let usuario of usuarios | filtro: 'name.first': busqueda | sort: 'dob.age': 'asc'">
     <td>{{ usuario | nombre }}</td>
     <td>{{ usuario | genero }}</td>
     <td>{{ usuario.email }}</td>
-    <td>{{ usuario.dob.age }}</td>
-    <td>{{ usuario.dob.date | date: 'dd/MM/yyyy' }}</td>
+    <td>{{ usuario.dob.age | edad: 'es': 'long' }}</td>
+    <td>{{ usuario.dob.date | date: 'fullDate' }} {{usuario.dob.date | date: 'shortTime'}}</td>
     <td>{{ 1000 | currency: 'ARS' | lowercase }}</td>
   </tr>
 </table>

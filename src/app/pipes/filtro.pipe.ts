@@ -7,11 +7,14 @@ import { Usuario } from '../modelos/usuario';
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform(usuarios: Usuario[], busqueda: string): Usuario[] {
+  transform(usuarios: any[], campo: string, busqueda: string): Usuario[] {
     return usuarios.filter(usuario => {
-      const { title, first, last } = usuario.name;
-      const completeName = `${title} ${first} ${last}`.toLowerCase();
-      return completeName.includes(busqueda.toLowerCase());
+
+      //const valorCampo = usuario[campo]?.toString().toLowerCase() || '';
+      const valorCampo = campo.split('.').reduce((obj, key) => obj?.[key], usuario);
+      console.log(valorCampo);
+
+      return valorCampo.toLowerCase().includes(busqueda.toLowerCase());
     });
   }
 
